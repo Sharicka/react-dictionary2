@@ -8,6 +8,7 @@ export default function Dictionary(props) {
   let [results, setResults] = useState(null);
 
   function handleResponse(response) {
+    console.log(response.data.meanings[0].definition);
     setResults(response.data);
   }
 
@@ -16,19 +17,38 @@ export default function Dictionary(props) {
 
     let apiKey = "3f6be1c407b0d9d1933561808db358ba";
     let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
+
+    axios.get(apiUrl).then(handleResponse);
   }
-  axios.get(apiUrl).then(handleResponse);
 
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
 
-  return (
-    <div className="Dictionary">
-      <form onSubmit={search}>
-        <input type="search" onChange={handleKeywordChange} />
-      </form>
-      <Results results={results} />
-    </div>
-  );
+  if (results) {
+    return (
+      <div className="Dictionary">
+        <form onSubmit={search}>
+          <input
+            type="search"
+            autoFocus={true}
+            onChange={handleKeywordChange}
+          />
+        </form>
+        <Results results={results} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="Dictionary">
+        <form onSubmit={search}>
+          <input
+            type="search"
+            autoFocus={true}
+            onChange={handleKeywordChange}
+          />
+        </form>
+      </div>
+    );
+  }
 }
