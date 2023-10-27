@@ -4,12 +4,12 @@ export default function Meaning(props) {
   if (props.meaning) {
     return (
       <div className="Meaning">
-        <h2>{props.meaning.partOfSpeech}</h2>
+        <h3>{props.meaning.partOfSpeech}</h3>
         <div>
           <p>
             {props.meaning.definition}
             <br />
-            {props.meaning.example}
+            <em>{props.meaning.example}</em>
           </p>
         </div>
       </div>

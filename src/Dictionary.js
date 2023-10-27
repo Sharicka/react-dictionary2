@@ -4,7 +4,7 @@ import axios from "axios";
 import Results from "./Results";
 
 export default function Dictionary(props) {
-  let [keyword, setKeyword] = useState(props.defaultKeyword);
+  let [keyword, setKeyword] = useState(null);
   let [results, setResults] = useState(null);
 
   function handleResponse(response) {
