@@ -11,7 +11,7 @@ export default function App() {
           <Dictionary />
         </main>
         <footer>
-          <small>Coded by Sharicka Clarke</small>
+          <small>Coded by Sharicka Clarke and is open-sourced</small>
         </footer>
       </div>
     </div>
